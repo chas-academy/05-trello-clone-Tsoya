@@ -1,6 +1,6 @@
 import $ from 'jquery';
 
-// require('webpack-jquery-ui');
+require('webpack-jquery-ui');
 import '../css/styles.css';
 
 /**
@@ -63,13 +63,22 @@ const jtrello = (function() {
     event.preventDefault();
     console.log("This should create a new card");
 
-    let task = $('input').val();
+    // let task = $('input').val();
+    let task = $(this).find('input').val();
     console.log(task);
 
     // $('.list-cards').append("<li class='card'>" + task + "</li>");
     
-    $("<li class='card'>" + task + "<button class='button delete'>X</button></li>").insertBefore(".add-new");
+
+
+  
+
+    // let addedtask =  $("<li class='card'>" + task + "<button class='button delete'>X</button></li>").insertBefore(".add-new");
+
+    $(this).closest(".add-new").before("<li class ='card'>" + task + "<button class='button delete'>X</button></li>"); 
     
+    console.log($(this).parent());
+
   }
 
 
@@ -80,21 +89,23 @@ const jtrello = (function() {
   function deleteCard() {
     console.log("This should delete the card you clicked on");
 
-    $('.card').on("click", "button", function (event) {
+    // $('.card').on("click", "button", function (event) {
       $(this).parent().fadeOut(500, function () {
         $(this).remove('.list');
       })
-    })
+    // })
     
   }
 
+  $(function () {
+
+    $('.list-cards').sortable();
+    $('.list-cards').disableSection();
+
+  });  
 
 
-
-
-
-
-
+  
 
 
 

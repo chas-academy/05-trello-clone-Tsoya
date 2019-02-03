@@ -50,6 +50,14 @@ const jtrello = (function() {
   function createList() {
     // event.preventDefault();
     console.log("This should create a new list");
+    $('#list-creation-dialog').dialog();
+    // $('#datepicker').datepicker();
+
+    let newList = $('#list-creation-dialog').find('input').val();
+    // let dateList = $('#list-creation-dialog').find('datepicker').val();
+    console.log(newList);
+
+    
 
   }
 
@@ -93,16 +101,14 @@ const jtrello = (function() {
     
   }
 
-  // $(function () {
-
-  //   $('.list-cards').sortable();
-  //   // $('.list-cards').disableSection();
-  //   connectWith: '.list-cards'
-
-  // });  
+  //sortable
 
   $('.list-cards').sortable({
     connectWith: '.list-cards'
+  })
+
+  $('.column').sortable({
+    connectWith: '.column'
   })
 
 

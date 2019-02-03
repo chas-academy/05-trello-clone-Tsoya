@@ -48,8 +48,9 @@ const jtrello = (function() {
 
   /* ============== Metoder för att hantera listor nedan ============== */
   function createList() {
-    event.preventDefault();
+    // event.preventDefault();
     console.log("This should create a new list");
+
   }
 
   function deleteList() {
@@ -92,22 +93,17 @@ const jtrello = (function() {
     
   }
 
-  $(function () {
+  // $(function () {
 
-    $('.list-cards').sortable();
-    $('.list-cards').disableSection();
+  //   $('.list-cards').sortable();
+  //   // $('.list-cards').disableSection();
+  //   connectWith: '.list-cards'
 
-  });  
+  // });  
 
-
-  
-
-
-
-
-
-
-
+  $('.list-cards').sortable({
+    connectWith: '.list-cards'
+  })
 
 
 

@@ -54,28 +54,56 @@ const jtrello = (function() {
 
   function deleteList() {
     console.log("This should delete the list you clicked on");
-
   }
+
+
 
   /* =========== Metoder för att hantera kort i listor nedan =========== */
   function createCard(event) {
     event.preventDefault();
     console.log("This should create a new card");
 
-    //create a card when pressing button
-    $('.card').clone().appendTo('.list-cards');
+    let task = $('input').val();
+    console.log(task);
+
+    // $('.list-cards').append("<li class='card'>" + task + "</li>");
+    
+    $("<li class='card'>" + task + "<button class='button delete'>X</button></li>").insertBefore(".add-new");
+    
   }
+
+
+
+
+
 
   function deleteCard() {
     console.log("This should delete the card you clicked on");
 
     $('.card').on("click", "button", function (event) {
       $(this).parent().fadeOut(500, function () {
-        $(this).remove();
+        $(this).remove('.list');
       })
     })
     
   }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   // Metod för att rita ut element i DOM:en
   function render() {}

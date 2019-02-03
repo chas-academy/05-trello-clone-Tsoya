@@ -54,6 +54,10 @@ const jtrello = (function() {
 
   function deleteList() {
     console.log("This should delete the list you clicked on");
+
+    $(this).parent().fadeOut(500, function () {
+      $(this).parent().remove();
+    })
   }
 
 
@@ -66,24 +70,15 @@ const jtrello = (function() {
     // let task = $('input').val();
     let task = $(this).find('input').val();
     console.log(task);
-
-    // $('.list-cards').append("<li class='card'>" + task + "</li>");
     
+    let addedTask = $(this).closest(".add-new").before("<li class='card'>" + task + "<button class='button delete'>X</button></li>");
 
+    $(this).parent().prev().find('button.delete').click(deleteCard);
 
-  
+    console.log(this);
 
-    // let addedtask =  $("<li class='card'>" + task + "<button class='button delete'>X</button></li>").insertBefore(".add-new");
-
-    $(this).closest(".add-new").before("<li class ='card'>" + task + "<button class='button delete'>X</button></li>"); 
-    
-    console.log($(this).parent());
 
   }
-
-
-
-
 
 
   function deleteCard() {
